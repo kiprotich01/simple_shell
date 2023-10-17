@@ -9,8 +9,9 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 Benson Kiprotich
 
 Task 0: Bettty would be proud
+
+```
 #include <stdio.h>
-'''
 /**
  * main - Entry point of the program
  *
@@ -19,6 +20,5 @@ Task 0: Bettty would be proud
 int main(void)
 {
     printf("Hello, world!\n");
-    return (0);
-}'''
-
+    return (0);}
+```
