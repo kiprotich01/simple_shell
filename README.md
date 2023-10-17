@@ -8,17 +8,13 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 # Authors
 Benson Kiprotich
 
-Task 0: Bettty would be proud
+## How to add Author file
+`Bash script for generating the list of authors in git repo`
+```
+#!/bin/sh
 
-```
-#include <stdio.h>
-/**
- * main - Entry point of the program
- *
- * Return: Always 0 (Success)
- */
-int main(void)
-{
-    printf("Hello, world!\n");
-    return (0);}
-```
+git shortlog -se \
+  | perl -spe 's/^\s+\d+\s+//' \
+  | sed -e '/^CommitSyncScript.*$/d' \
+  > AUTHORS
+  ```
