@@ -10,7 +10,7 @@ Benson Kiprotich
 
 Task 0: Bettty would be proud
 #include <stdio.h>
-
+'''
 /**
  * main - Entry point of the program
  *
@@ -20,5 +20,5 @@ int main(void)
 {
     printf("Hello, world!\n");
     return (0);
-}
+}'''
 
