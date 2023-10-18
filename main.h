@@ -1,4 +1,4 @@
-#ifndef _SHELL_H_
+i#ifndef _SHELL_H_
 #define _SHELL_H_
 
 #include <stdio.h>
@@ -12,22 +12,22 @@
 #include <fcntl.h>
 #include <errno.h>
 
-/* Buffer Sizes */
+/* buffers */
 #define READ_BUF_SIZE 1024
 #define WRITE_BUF_SIZE 1024
 #define BUF_FLUSH -1
 
-/* Command Chaining Types */
+/* chaining */
 #define CMD_NORM	0
 #define CMD_OR		1
 #define CMD_AND		2
 #define CMD_CHAIN	3
 
-/* Number Conversion Flags */
+/* number conversion */
 #define CONVERT_LOWERCASE	1
 #define CONVERT_UNSIGNED	2
 
-/* Using system getline() */
+/* 1 for using get line in the system */
 #define USE_GETLINE 0
 #define USE_STRTOK 0
 
@@ -36,8 +36,9 @@
 
 extern char **environ;
 
+
 /**
- * A singly linked list structure for storing an integer and a string.
+ * next - points to the next node
  */
 typedef struct liststr
 {
@@ -46,9 +47,6 @@ typedef struct liststr
 	struct liststr *next;
 } list_t;
 
-/**
- * A structure for passing pseudo-arguments to functions, enabling a uniform prototype.
- */
 typedef struct passinfo
 {
 	char *arg;
@@ -66,8 +64,8 @@ typedef struct passinfo
 	int env_changed;
 	int status;
 
-	char **cmd_buf; /* Pointer to a command buffer for chaining, for memory management */
-	int cmd_buf_type; /* Command type: CMD_type ||, &&, ; */
+	char **cmd_buf; 
+	int cmd_buf_type; 
 	int readfd;
 	int histcount;
 } info_t;
@@ -76,16 +74,13 @@ typedef struct passinfo
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 	0, 0, 0}
 
-/**
- * A structure representing built-in commands and their corresponding functions.
- */
 typedef struct builtin
 {
 	char *type;
 	int (*func)(info_t *);
 } builtin_table;
 
-/* Function Prototypes */
+
 int hsh(info_t *, char **);
 int find_builtin(info_t *);
 void find_cmd(info_t *);
@@ -103,8 +98,8 @@ int _putfd(char c, int fd);
 int _putsfd(char *str, int fd);
 
 int _strlen(char *);
-int _strcmp(char *);
-char *starts_with(const char *, the char *);
+int _strcmp(char *, char *);
+char *starts_with(const char *, const char *);
 char *_strcat(char *, char *);
 
 char *_strcpy(char *, char *);
@@ -164,7 +159,7 @@ int _setenv(info_t *, char *, char *);
 char *get_history_file(info_t *info);
 int write_history(info_t *info);
 int read_history(info_t *info);
-int build_history list(info_t *info, char *buf, int linecount);
+int build_history_list(info_t *info, char *buf, int linecount);
 int renumber_history(info_t *info);
 
 list_t *add_node(list_t **, const char *, int);
@@ -186,4 +181,3 @@ int replace_vars(info_t *);
 int replace_string(char **, char *);
 
 #endif
-
